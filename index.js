@@ -327,7 +327,7 @@ var compile = exports.compile = function(str, options){
   if (options.debug) console.log(str);
 
   try {
-    var fn = new Function('locals, escape, Q, all', str);
+    var fn = exports.createFunction('locals, escape, Q, all', str);
   } catch (err) {
     if ('SyntaxError' == err.name) {
       err.message += options.filename
@@ -341,6 +341,10 @@ var compile = exports.compile = function(str, options){
     return fn.call(this, locals || {}, exports.escape, Q, all);
   }
 };
+
+exports.createFunction = function createFunction(params, str) {
+  return new Function(params, str);
+}
 
 /**
  * Render the given `str` of qejs.
