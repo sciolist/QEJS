@@ -31,7 +31,5 @@
     "url": "git://github.com/jepso/QEJS.git"
   },
   "scripts": {
-    "prepublish": "mocha",
-    "test": "mocha -R spec"
   }
 }
